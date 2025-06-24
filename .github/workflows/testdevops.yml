@@ -1,6 +1,6 @@
-name : testdevops
+name: testdevops
 
-ON :
+on:
   push: 
     branches: 
       - '**'

@@ -23,12 +23,12 @@ jobs:
         run: cp .env.example .env
 
       - name: set-shortsha
-        id: commit-sha
+        id: vars
         run: echo "sha=${GITHUB_SHA::8}" >> $GITHUB_OUTPUT
 
       - name: prepare-docker-compose
         run: |
-          SHA=${{steps.commmit-sha.output.sha}}
+          SHA=${{steps.vars.outputs.sha}}
           sed -i "s~__WORKSPACE_IMAGE__~${REGISTRY_USER}/workspace_${SHA}~g" docker-compose.prod.yml
           sed -i "s~__PHP_FPM_IMAGE__~${REGISTRY_USER}/php_fpm_${SHA}~g" docker-compose.prod.yml
           sed -i "s~__NGINX_IMAGE__~${REGISTRY_USER}/nginx_${SHA}~g" docker-compose.prod.yml

@@ -1,0 +1,11 @@
+services:
+
+### Workspace Utilities ##################################
+    workspace:
+      image: __WORKSPACE_IMAGE__
+### PHP-FPM ##############################################
+    php-fpm:
+      image: __PHP_FPM_IMAGE__
+### NGINX Server #########################################
+    nginx:
+      image: __NGINX_IMAGE__
